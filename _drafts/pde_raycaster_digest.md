@@ -1,6 +1,6 @@
 ---
 layout: post
-title:  "PDE Raycaster (preview)"
+title:  "PDE Raycaster"
 categories: digest update
 ---
 <pre>
