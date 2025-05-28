@@ -20,13 +20,13 @@ Lately I've been contending with a bout of emotional strife. My struggle with ge
 
 <br>
 
-With a stream of consciousness fueled by the onset of hyperfixation I've found myself entranced by a flame of nostalgia ignited by the spark of an old obsession: ***raycasting!***
+So, without further ado please join me in this babbling stream of consciousness fueled by the onset of hyperfixation! Allow yourself to become entranced by a flame of nostalgia ignited by the spark of an old obsession of mine: ***raycasting!***
 
 <br>
 
 # **What Is Raycasting?**
 
-I'm not certain, but over the years I've got the impression that there exists some contention or, at the very least, some "fuzziness" as to the *exact* boundaries of what may *formally* be considered a raycaster. As a result, I set out to identify some qualities which precisely distinguish raycasting from its derivatives (e.g.: ray marching, ray tracing, etc.) or unambiguously define the relationship between them.
+I'm not certain, but over the years I've got the impression that there exists some contention or, at the very least, some "fuzziness" as to the *exact* boundaries of what may *formally* be considered a raycaster. As a result, I set out to identify some qualities which precisely distinguish raycasting from its derivatives (e.g.: ray marching, ray tracing, etc.) and unambiguously define the relationship between them.
 
 <div>
     <div style="float: right">
@@ -39,9 +39,9 @@ I'm not certain, but over the years I've got the impression that there exists so
 
 #### **My Interpretation**
 
-In general, I consider raycasting to be a broad class of computer graphics rendering techniques all characterized by their ability to visualize geometric entities in a scene based on those entities' interactions with "view rays". From this perspective, anything which tests **objects** for intersection with **view rays** and then renders some visual representation of those intersections is a raycaster. What distinguishes various raycasting derivatives from one another, in my opinion, lies within the finer details: _how do we arrive at an intersection in the first place and how do we represent the subsequent interaction?_
+In general, I consider raycasting to be a broad class of computer graphics rendering techniques all characterized by their ability to visualize geometric entities in a scene based on those entities' interactions with "view rays". From this perspective, anything which tests **objects** for intersection with **view rays** and then renders some representation of those intersections is a raycaster.
 
-...works by comparing each individual view ray (1 per vertical column of pixels on the screen) against all elements of a 2D scene comprised of unstructured line segments or "Edges". The objective of such a comparison is to derive the point, if one exists, at which the element in question intersects our line of site.
+What distinguishes various raycasting derivatives from one another, in my estimation, lies within the finer details: _how do we arrive at an intersection in the first place and how do we represent the resulting interaction and any subsequent interactions?_
 
 <img alt="Animated GIF showing a scene from a pseudo-3D, 1st person perspective alongside the same scene shown from a 2D, overhead-like perspective as the field of view can be seen rotating about the viewer's vertical axis from both perspectives." src="https://upload.wikimedia.org/wikipedia/commons/e/e7/Simple_raycasting_with_fisheye_correction.gif" width="100%"/>
 
@@ -49,7 +49,6 @@ In general, I consider raycasting to be a broad class of computer graphics rende
 <img alt="Animated GIF showing a texture-mapped scene from a pseudo-3D, 1st person perspective as the view pans along the scene vertically." src="/assets/ll3d_raycaster.gif" width="100%"/>
 
 I have written a raycaster in the past. Granted, it was a certifiable mess, but it served its purpose as a worthwhile learning experience. It featured texture-mapped walls, vertical camera panning via [Y-shearing](https://zdoom.org/wiki/Y-shearing) in addition to neat post-processing effects like a reflective "water" floor effect as well as a frame-blending-style motion blur effect.
-NOTE: maybe title the section going into detail about testing the equations "Brute Force".
 ```java
 public class Edges {
     // ...
@@ -88,15 +87,14 @@ public class Edges {
             }
             //if(Math.signum(x-xa1)==Math.signum(ra) && Math.signum(y-ya1)==Math.signum(yb1-ya1))
             float[] hit={x,y,(xa2-x)*(xa2-x)+(ya2-y)*(ya2-y)};
-            if(!EyeContains(hit,xa1,ya1,xb1,yb1) || !EdgeContains(hit,xa2,ya2,xb2,yb2))
-                return null;//hit;
-            else
-                return hit;//null;
+            if(isInView(hit) && isOnEdge(hit,xa2,ya2,xb2,yb2)) {
+                return hit;
+            }
         }
         return null;
     }
-    
-    private static boolean EdgeContains(float[] hit, float xa, float ya, float xb, float yb)
+
+    private static boolean isOnEdge(float[] hit, float xa, float ya, float xb, float yb)
     {
         //*
         float dotProduct = (hit[0] - xa) * (xb - xa) + (hit[1] - ya)*(yb - ya);
@@ -105,12 +103,12 @@ public class Edges {
         if (dotProduct > lengthSqrdba) return false;
         return true;
     }
-    
-    private static boolean EyeContains(float[] hit)
+
+    private static boolean isInView(float[] hit)
     {
         return hit[1] > 0;
     }
-    
+
     // ...
 }
 ```
