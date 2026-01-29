@@ -1,7 +1,7 @@
 ---
 layout: post
 title:  "New Solo Project"
-date:   2025-01-28 21:00:00 -0500
+date:   2026-01-28 21:00:00 -0500
 categories: newforce sop
 ---
 
