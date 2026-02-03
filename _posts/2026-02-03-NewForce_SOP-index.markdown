@@ -10,4 +10,4 @@ Included on this page are supplementary resources describing a set of formalized
 - Visit: [New Solo Project]({{ site.baseurl }}{% link _posts/2026-01-28-NewForce_SOP-new_solo_project.markdown %})
 
 <div style="border: 1px solid white; padding: 10px;"><h3>Need a quick refresher on how to push your changes to GitHub?</h3></div>
-- Visit: [Push Changes To GitHub]({{ site.baseurl }}{% link _posts/2026-01-28-NewForce_SOP-new_solo_project.markdown %})
+- Visit: [Push Changes To GitHub]({{ site.baseurl }}{% link _posts/2026-01-29-NewForce_SOP-push_changes_to_github.markdown %})
