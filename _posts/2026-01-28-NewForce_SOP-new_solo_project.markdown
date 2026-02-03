@@ -23,3 +23,6 @@ categories: newforce sop
 
 5. Using Git Bash or your terminal of choice navigate to the folder within your workspace in which you want the folder containing your local repo to exist. After this step you can then "`cd`" into the new folder created by "`git clone`" to house your local repo and then get started!
 <br>	![step-5-git_clone.png](/assets/newforce/sop/step-5-git_clone.png)
+
+<div style="border: 1px solid white; padding: 10px;"><h3>Looking for another SOP?</h3></div>
+- Visit: [NewForce SOP Index]({{ site.baseurl }}{% link _posts/2026-02-03-NewForce_SOP-index.markdown %})

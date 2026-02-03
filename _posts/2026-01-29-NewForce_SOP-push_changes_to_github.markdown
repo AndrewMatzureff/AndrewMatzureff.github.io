@@ -32,3 +32,6 @@ categories: newforce sop
     <div style="border: 1px solid yellow; padding: 10px;">
     <pre><b>⚠ NOTE: <i>Make sure that your remote branch is now synced to your local branch! <br>You can verify this by using `git lol` (see note at step 3 for instructions on how to set up `git lol`) to check for `(HEAD -> your-branch-name)` where `your-branch-name` refers to the branch whose latest changes you just pushed. <br>After pushing your changes another `git lol` should show that the current state of your remote repo (e.g.: at `origin/main` and `origin/HEAD`) now corresponds to the latest commit you just created at the tip of your local branch. <br></i></b>```<br># Print out a concise, pretty-formatted commit log so that you can visually verify the state of your working tree.<br>git lol<br>```</pre>
     </div>
+
+<div style="border: 1px solid white; padding: 10px;"><h3>Looking for another SOP?</h3></div>
+- Visit: [NewForce SOP Index]({{ site.baseurl }}{% link _posts/2026-02-03-NewForce_SOP-index.markdown %})
